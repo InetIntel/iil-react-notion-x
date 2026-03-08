@@ -1514,6 +1514,8 @@ svg.notion-page-icon {
 .notion-collection {
   align-self: center;
   min-width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .notion-collection-header {
