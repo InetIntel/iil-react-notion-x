@@ -1578,8 +1578,8 @@ svg.notion-page-icon {
 }
 
 .notion-table {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   align-self: center;
   overflow: auto hidden;
 }
@@ -2024,8 +2024,8 @@ svg.notion-page-icon {
 }
 
 .notion-board {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   align-self: center;
   overflow: auto hidden;
 }
