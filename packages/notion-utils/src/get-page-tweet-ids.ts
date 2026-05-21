@@ -19,5 +19,5 @@ export const getPageTweetIds = (
         return
       }
     })
-    .filter((id): id is string => !!id))
+    .filter((id): id is string => !!id)
 }
