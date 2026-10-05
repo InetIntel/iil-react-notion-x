@@ -86,7 +86,7 @@ export const getPageImageUrls = (
 
       return resolvedUrl ? mapImageUrl(resolvedUrl, block) : undefined
     })
-    .filter(Boolean)
+    .filter((url): url is string => !!url)
 
   return Array.from(new Set(imageUrls))
 }
