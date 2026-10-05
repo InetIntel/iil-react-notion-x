@@ -1,0 +1,28 @@
+# Notify iil-site-engine that an integration branch changed.
+# Lives on the `ci-iil-engine` feature branch (never submitted upstream) and is
+# merged into both integration branches:
+#   test-my-production -> channel "test" (site-engine:test, test-<site> domains)
+#   my-production      -> channel "prod" (site-engine:prod / :latest)
+name: Notify IIL Engine on Update
+
+on:
+  push:
+    branches:
+      - my-production
+      - test-my-production
+
+jobs:
+  ping-engine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger iil-site-engine build for this channel
+        env:
+          CHANNEL: ${{ github.ref_name == 'my-production' && 'prod' || 'test' }}
+        run: |
+          echo "Notifying iil-site-engine (channel=$CHANNEL, sha=${GITHUB_SHA})"
+          curl --fail-with-body -sS \
+               -H "Authorization: token ${{ secrets.ENGINE_DISPATCH_PAT }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               -X POST \
+               -d "{\"event_type\": \"submodule_updated\", \"client_payload\": {\"channel\": \"$CHANNEL\", \"source\": \"iil-react-notion-x\", \"sha\": \"${GITHUB_SHA}\"}}" \
+               https://api.github.com/repos/InetIntel/iil-site-engine/dispatches
