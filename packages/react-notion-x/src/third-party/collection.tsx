@@ -1,7 +1,6 @@
 import type * as types from 'notion-types'
 import {
   getBlockCollectionId,
-  getBlockParentPage,
   getBlockValue,
   getTextContent
 } from 'notion-utils'
@@ -25,9 +24,9 @@ export function Collection({
   ctx
 }: {
   block:
-  | types.CollectionViewBlock
-  | types.CollectionViewPageBlock
-  | types.PageBlock
+    | types.CollectionViewBlock
+    | types.CollectionViewPageBlock
+    | types.PageBlock
   className?: string
   ctx: NotionContext
 }) {
@@ -258,7 +257,7 @@ function CollectionViewTabs({
           className={cs(
             'notion-collection-view-tabs-content-item',
             collectionViewId === viewId &&
-            'notion-collection-view-tabs-content-item-active'
+              'notion-collection-view-tabs-content-item-active'
           )}
         >
           <CollectionViewColumnDesc
