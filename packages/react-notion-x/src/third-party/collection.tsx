@@ -1,7 +1,6 @@
 import type * as types from 'notion-types'
 import {
   getBlockCollectionId,
-  getBlockParentPage,
   getBlockValue,
   getTextContent
 } from 'notion-utils'
