@@ -1,6 +1,10 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    # Branches only: skip tag pushes (e.g. prod-* promotion tags), which
+    # would re-run CI on a commit that was already tested on its branch.
+    branches: ['**']
 
 jobs:
   test:
